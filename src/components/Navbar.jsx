@@ -2,20 +2,21 @@ import { useState } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import "../App.css";
 
 export default function AppNavbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [expanded, setExpanded] = useState(false); 
+  const [expanded, setExpanded] = useState(false);
 
   const handleLogout = async () => {
     await logout();
     navigate("/login");
-    setExpanded(false); 
+    setExpanded(false);
   };
 
-  const handleLinkClick = () => setExpanded(false); 
+  const handleLinkClick = () => setExpanded(false);
 
   // Check if link is active
   const isActive = (path) => {
@@ -28,23 +29,31 @@ export default function AppNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" expanded={expanded}>
       <Container>
-        <Navbar.Brand as={Link} to="/" onClick={handleLinkClick}>LokalJOB</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" onClick={handleLinkClick}>
+          LokalJOB
+        </Navbar.Brand>
 
-        <Navbar.Toggle onClick={() => setExpanded(prev => !prev)} />
+        <Navbar.Toggle onClick={() => setExpanded((prev) => !prev)} />
+
+        {/* NOTIFICATION BAR */}
+        <div className="notif-bar">
+          <span>⚠️ This website is for capstone project purposes only</span>
+        </div>
+
         <Navbar.Collapse>
           {/* LEFT MENU */}
           <Nav className="me-auto">
-            <Nav.Link 
-              as={Link} 
-              to="/" 
+            <Nav.Link
+              as={Link}
+              to="/"
               onClick={handleLinkClick}
               className={isActive("/") ? "active-navlink" : ""}
             >
               Home
             </Nav.Link>
-            <Nav.Link 
-              as={Link} 
-              to="/jobs" 
+            <Nav.Link
+              as={Link}
+              to="/jobs"
               onClick={handleLinkClick}
               className={isActive("/jobs") ? "active-navlink" : ""}
             >
@@ -53,17 +62,17 @@ export default function AppNavbar() {
 
             {user && (
               <>
-                <Nav.Link 
-                  as={Link} 
-                  to="/messages" 
+                <Nav.Link
+                  as={Link}
+                  to="/messages"
                   onClick={handleLinkClick}
                   className={isActive("/messages") ? "active-navlink" : ""}
                 >
                   Message
                 </Nav.Link>
-                <Nav.Link 
-                  as={Link} 
-                  to="/profile" 
+                <Nav.Link
+                  as={Link}
+                  to="/profile"
                   onClick={handleLinkClick}
                   className={isActive("/profile") ? "active-navlink" : ""}
                 >
@@ -85,17 +94,17 @@ export default function AppNavbar() {
               </Button>
             ) : (
               <>
-                <Nav.Link 
-                  as={Link} 
-                  to="/login" 
+                <Nav.Link
+                  as={Link}
+                  to="/login"
                   onClick={handleLinkClick}
                   className={isActive("/login") ? "active-navlink" : ""}
                 >
                   Login
                 </Nav.Link>
-                <Nav.Link 
-                  as={Link} 
-                  to="/register" 
+                <Nav.Link
+                  as={Link}
+                  to="/register"
                   onClick={handleLinkClick}
                   className={isActive("/register") ? "active-navlink" : ""}
                 >

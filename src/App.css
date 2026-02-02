@@ -227,3 +227,28 @@
 .active-navlink:hover {
   color: #ffca2c !important;
 }
+
+.notif-bar {
+  width: 100%;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 15px; /* normal & readable */
+  color: #ffc107; /* bootstrap warning */
+  /* background: rgba(255, 193, 7, 0.1); */
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.notif-bar span {
+  display: inline-block;
+  animation: slide 12s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
