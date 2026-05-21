@@ -37,7 +37,7 @@ export default function AppNavbar() {
 
         {/* NOTIFICATION BAR */}
         <div className="notif-bar">
-          <span>⚠️ This website is for capstone project purposes only</span>
+          <span>⚠️ This website is for capstone project purposes only. https://fm-ochre-seven.vercel.app/ for new version of this project</span>
         </div>
 
         <Navbar.Collapse>
